@@ -10,5 +10,14 @@ self.addEventListener('sync', function(event){
 
 // We'll do the actual fetching in here
 function fetchJson(){
-  console.log("Don't go json waterfalls.")
+  fetch('./data.json')
+    .then(function(response) {
+      return response;
+    })
+    .then(function(text) {
+      console.log('Request successful', text);
+    })
+    .catch(function(error) {
+      console.log('Request failed', error);
+    });
 }

@@ -1,0 +1,16 @@
+{
+        "status": "Beta",
+        "bornAt": "BetaNYC Hacknights",
+        "geography": "NYC",
+        "politicalEntity":"",
+        "type":"Web App",
+        "needs": [
+                {"need": "Web Designer"},
+                {"need": "Node Dev"},
+                {"need": "Angularjs Dev"}
+        ],
+        "categories": [
+                {"category": "Community"},
+                {"category": "Education"}
+        ]
+}

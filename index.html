@@ -16,15 +16,20 @@
           navigator.serviceWorker.register('./service-worker.js').then((registration) => {
           return navigator.serviceWorker.ready;
         }).then((registration) => {
-          // Once the service worker is registered and ready,
-          // we'll register events to listen for here
+          // Add an event listener to the button
+          document.getElementById('requestButton').addEventListener('click', () => {
+            registration.sync.register('json-fetch').then(() => {
+              console.log('sync event registered');
+            }).catch(function(error){
+              console.error('Unable to fetch image.');
+            });
+          });
         }).catch(function(error){
-          // If we can't spin up a service worker we'll console.log an error here
+          console.error('Unable to start service worker')
         });
     }
     else{
-      // We'll console.log
-      console.log('Service Worker functionality not supported.');
+      console.error('Service Worker functionality not supported.');
     }
 	</script>
   </body>

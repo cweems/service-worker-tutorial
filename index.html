@@ -9,7 +9,23 @@
    <p>Click on the button below to make an HTTP request.<p>
    <button id="requestButton">Make an HTTP request</button>
 	<script>
-  // Register service worker here
+
+  // Check to see if service worker is available
+  if ('serviceWorker' in navigator) {
+          // Register the service worker
+          navigator.serviceWorker.register('./service-worker.js').then((registration) => {
+          return navigator.serviceWorker.ready;
+        }).then((registration) => {
+          // Once the service worker is registered and ready,
+          // we'll register events to listen for here
+        }).catch(function(error){
+          // If we can't spin up a service worker we'll console.log an error here
+        });
+    }
+    else{
+      // We'll console.log
+      console.log('Service Worker functionality not supported.');
+    }
 	</script>
   </body>
 </html>

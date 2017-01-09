@@ -32,14 +32,13 @@
           // Register the service worker
           navigator.serviceWorker.register('./service-worker.js').then((registration) => {
           return navigator.serviceWorker.ready;
-        }).then((registration) => {
-          // We can to some post-install stuff here
         }).catch(function(error){
           // Catch if the worker doesn't install for some reason
           console.error('Unable to start service worker')
         });
     }
     else{
+      // We would normally fail silently, but logging this for now.
       console.error('Service Worker functionality not supported.');
     }
   </script>

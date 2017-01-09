@@ -1,36 +1,30 @@
 <!DOCTYPE html>
 <html>
- <head>
-  <meta charset="UTF-8">
-  <title>Basic BackgroundSync Example</title>
- </head>
- <body>
-   <div id="connectionStatus">You are currently offline. Any requests made will be queued and synced as soon as you are connected again.</div>
-   <p>Click on the button below to make an HTTP request.<p>
-   <button id="requestButton">Make an HTTP request</button>
-	<script>
-
-  // Check to see if service worker is available
-  if ('serviceWorker' in navigator) {
-          // Register the service worker
-          navigator.serviceWorker.register('./service-worker.js').then((registration) => {
-          return navigator.serviceWorker.ready;
-        }).then((registration) => {
-          // Add an event listener to the button
-          document.getElementById('requestButton').addEventListener('click', () => {
-            registration.sync.register('json-fetch').then(() => {
-              console.log('sync event registered');
-            }).catch(function(error){
-              console.error('Unable to fetch image.');
-            });
-          });
-        }).catch(function(error){
-          console.error('Unable to start service worker')
-        });
-    }
-    else{
-      console.error('Service Worker functionality not supported.');
-    }
-	</script>
+  <head>
+    <meta charset="UTF-8">
+    <title>Basic BackgroundSync Example</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="panel panel-default">
+      <div class="panel-heading">
+        <p>Building Issue Reporter</p>
+      </div>
+       <div class="panel-body">
+         <form>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter the building address here...">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Inspection Issue</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Briefly describe the issue...">
+          </div>
+          <button type="submit" class="btn btn-default">Submit Issue</button>
+        </form>
+      </div>
+      </div>
+    </div>
   </body>
 </html>

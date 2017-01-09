@@ -11,6 +11,14 @@ self.addEventListener('install', function(event) {
       .then(function(cache) {
         console.log('Opened cache');
         return cache.addAll(baseSiteFiles);
+      }).then(function(){
+        // Force the service worker to become active
+        return self.skipWaiting();
       })
   );
+});
+
+self.addEventListener('activate', function(event) {
+  // Claim all sessions
+  return self.clients.claim();
 });
